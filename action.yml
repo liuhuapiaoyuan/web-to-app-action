@@ -103,12 +103,15 @@ runs:
         ionic capacitor add android
         cd android
         ./gradlew assembleDebug
-        ./gradlew assembleRelease
+        ./gradlew assembleRelease 
+      shell: bash
+      working-directory: ionic_build_folder
+    - name: Sign APK
+      shell: bash
+      run: |
         if [ -n "${{ inputs.app-keystore }}" ]; then
           jarsigner -verbose  -keystore ${{ inputs.app-keystore }} -storepass ${{ inputs.store-password }} -keypass ${{ inputs.key-password }} -signedjar ionic_build_folder/android/app/build/outputs/apk/release/app-release.apk ionic_build_folder/android/app/build/outputs/apk/release/app-release-unsigned.apk ${{ inputs.app-alias }}
         fi
-      shell: bash
-      working-directory: ionic_build_folder
     
     - name: Copy APK to output folder
       run: |
