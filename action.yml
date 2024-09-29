@@ -80,19 +80,19 @@ runs:
         if [ -n "${{ inputs.app-keystore }}" ]; then
           echo "启动签名配置"
           echo '{
-  "appId": "${{ inputs.app-package }}",
-  "appName": "${{ inputs.app-name }}",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "build",
-  "android": {
-    "keystore": "keystore/my-release-key.keystore",
-    "alias": "relase",
-    "storePassword": "123456",
-    "keyPassword": "123456"
-  },
-  "cordova": {}
-}' > capacitor.config.json  
+            "appId": "${{ inputs.app-package }}",
+            "appName": "${{ inputs.app-name }}",
+            "bundledWebRuntime": false,
+            "npmClient": "npm",
+            "webDir": "build",
+            "android": {
+              "keystore": "keystore/my-release-key.keystore",
+              "alias": "relase",
+              "storePassword": "123456",
+              "keyPassword": "123456"
+            },
+            "cordova": {}
+          }' > capacitor.config.json  
         fi
         cat ionic.config.json
         cat capacitor.config.json
