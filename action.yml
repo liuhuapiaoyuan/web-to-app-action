@@ -75,8 +75,7 @@ runs:
         npm install @capacitor/cli --save-dev
         echo '{"appId": "${{ inputs.app-package }}","appName": "${{ inputs.app-name }}","bundledWebRuntime": false,"npmClient": "npm","webDir": "build","cordova": {}}' > capacitor.config.json
         echo '{"name": "${{ inputs.app-name }}","integrations": {"capacitor": {}},"type": "react"}' > ionic.config.json
-        cat capacitor.config.json
-        cat capacitor.config.json.tmp
+        cat capacitor.config.json 
         # Check if app-keystore is provided
         if [ -n "${{ inputs.app-keystore }}" ]; then
           echo "启动签名配置"
