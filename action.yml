@@ -73,7 +73,7 @@ runs:
         npm init -y
         npm install @capacitor/core
         npm install @capacitor/cli --save-dev
-        echo '{"appId": "${{ inputs.app-package }}","appName": "${{ inputs.app-name }}","bundledWebRuntime": false,"npmClient": "npm","webDir": "build","cordova": {}}' > capacitor.config.json
+        echo '{"appId": "${{ inputs.app-package }}","appName": "${{ inputs.app-name }}","bundledWebRuntime": false,"npmClient": "npm","webDir": "build","android":{},"cordova": {}}' > capacitor.config.json
         echo '{"name": "${{ inputs.app-name }}","integrations": {"capacitor": {}},"type": "react"}' > ionic.config.json
         cat capacitor.config.json 
         # Check if app-keystore is provided
