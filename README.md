@@ -1,3 +1,10 @@
+
+
+# 修复版本
+1. 修复java版本
+2. 修复node版本
+3. 增加`app-package`可以自定义包名称
+
 # web-to-app-action
 
 Use this action to convert you website HTML/Web-assets to APK for Andriod.
