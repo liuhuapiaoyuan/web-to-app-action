@@ -27,7 +27,8 @@ runs:
       with:
         java-version: '17'
         cache: 'gradle'
-
+        distribution: 'oracle'
+        
     - uses: actions/setup-node@v2
       with:
         node-version: '18.x'
