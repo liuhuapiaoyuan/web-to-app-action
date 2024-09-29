@@ -31,17 +31,17 @@ inputs:
   app-alias:
     description: "Alias for keystore"
     required: false
-    default: 'demo'
+    default: 'release'
 
   store-password:
     description: "Password for keystore"
     required: false
-    default: ''
+    default: '123456'
 
   key-password:
     description: "Password for key"
     required: false 
-    default: ''
+    default: '123456'
     
 runs:
   using: "composite"
@@ -85,11 +85,12 @@ runs:
             "bundledWebRuntime": false,
             "npmClient": "npm",
             "webDir": "build",
-            "android": {
-              "keystore": "keystore/my-release-key.keystore",
-              "alias": "relase",
-              "storePassword": "123456",
-              "keyPassword": "123456"
+            "buildOptions": {
+              "keystorePath": "${{ inputs.app-keystore }}",
+              "keystoreAlias": "${{ inputs.app-alias }}",
+              "keystorePassword": "${{ inputs.store-password }}",
+              "keystoreAliasPassword": "${{ inputs.key-password }}",
+              "signingType": "apksigner"
             },
             "cordova": {}
           }' > capacitor.config.json  
