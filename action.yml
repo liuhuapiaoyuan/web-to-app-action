@@ -89,6 +89,7 @@ runs:
             }
           }' > capacitor.config.json.tmp
           # Merge with existing config
+          cat capacitor.config.json.tmp
           jq -s '.[0] * .[1]' capacitor.config.json capacitor.config.json.tmp > capacitor.config.json
           rm capacitor.config.json.tmp
         fi
