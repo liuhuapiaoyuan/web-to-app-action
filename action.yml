@@ -91,7 +91,8 @@ runs:
                 "keystoreAlias": "${{ inputs.app-alias }}",
                 "keystorePassword": "${{ inputs.store-password }}",
                 "keystoreAliasPassword": "${{ inputs.key-password }}",
-                "signingType": "apksigner"
+                "signingType": "apksigner",
+                "releaseType": "APK"
               }
             },
             "cordova": {}
