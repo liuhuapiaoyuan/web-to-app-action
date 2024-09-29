@@ -85,12 +85,14 @@ runs:
             "bundledWebRuntime": false,
             "npmClient": "npm",
             "webDir": "build",
-            "buildOptions": {
-              "keystorePath": "${{ inputs.app-keystore }}",
-              "keystoreAlias": "${{ inputs.app-alias }}",
-              "keystorePassword": "${{ inputs.store-password }}",
-              "keystoreAliasPassword": "${{ inputs.key-password }}",
-              "signingType": "apksigner"
+            "android":{
+              "buildOptions": {
+                "keystorePath": "${{ inputs.app-keystore }}",
+                "keystoreAlias": "${{ inputs.app-alias }}",
+                "keystorePassword": "${{ inputs.store-password }}",
+                "keystoreAliasPassword": "${{ inputs.key-password }}",
+                "signingType": "apksigner"
+              }
             },
             "cordova": {}
           }' > capacitor.config.json  
