@@ -29,7 +29,7 @@ runs:
 
     - uses: actions/setup-node@v2
       with:
-        node-version: '16.x'
+        node-version: '18.x'
   
     - run: mkdir -p ionic_build_folder/build/
       shell: bash
