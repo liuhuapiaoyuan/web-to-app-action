@@ -25,8 +25,7 @@ runs:
     - name: Setup JDK
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
-        cache: 'gradle'
+        java-version: '17' 
         distribution: 'oracle'
         
     - uses: actions/setup-node@v2
