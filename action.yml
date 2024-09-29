@@ -23,7 +23,7 @@ runs:
   using: "composite"
   steps:
     - name: Setup JDK
-      uses: actions/setup-java@b36c23c0d998641eff861008f374ee103c25ac73
+      uses: uses: actions/setup-java@v4
       with:
         java-version: '17'
         cache: 'gradle'
