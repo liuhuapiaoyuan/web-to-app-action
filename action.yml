@@ -62,7 +62,12 @@ runs:
     - name: Copy build files to ionic build folder
       run: cp -r ${{ inputs.build-folder-path }}/* ionic_build_folder/build
       shell: bash
-      
+    - name: Copy keystore to ionic build folder
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.app-keystore }}" ]; then
+          cp -r ${{ inputs.app-keystore }} ionic_build_folder/my-release-key.keystore
+        fi
     - name: Setup jq command
       shell: bash
       run: sudo apt-get install -y jq
@@ -87,7 +92,7 @@ runs:
             "webDir": "build",
             "android":{
               "buildOptions": {
-                "keystorePath": "${{ inputs.app-keystore }}",
+                "keystorePath": "my-release-key.keystore",
                 "keystoreAlias": "${{ inputs.app-alias }}",
                 "keystorePassword": "${{ inputs.store-password }}",
                 "keystoreAliasPassword": "${{ inputs.key-password }}",
