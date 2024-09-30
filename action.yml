@@ -71,7 +71,11 @@ runs:
     - name: Setup jq command
       shell: bash
       run: sudo apt-get install -y jq
-    
+    - name: Install Android SDK
+      run: |
+        sudo apt-get install -y android-sdk
+        yes | sdkmanager --licenses
+        sdkmanager "build-tools;30.0.3" # 确保安装所需的 Build Tools
     - name: Setup ionic and capacitor
       run: |
         npm install -g @ionic/cli
@@ -82,7 +86,7 @@ runs:
         echo '{"name": "${{ inputs.app-name }}","integrations": {"capacitor": {}},"type": "react"}' > ionic.config.json
         cat capacitor.config.json 
         # Check if app-keystore is provided
-        if [ -n "${{ inputs.app-keystore1 }}" ]; then
+        if [ -n "${{ inputs.app-keystore }}" ]; then
           echo "启动签名配置"
           echo '{
             "appId": "${{ inputs.app-package }}",
@@ -92,7 +96,7 @@ runs:
             "webDir": "build",
             "android":{
               "buildOptions": {
-                "keystorePath": "my-release-key.keystore",
+                "keystorePath": "../my-release-key.keystore",
                 "keystoreAlias": "${{ inputs.app-alias }}",
                 "keystorePassword": "${{ inputs.store-password }}",
                 "keystoreAliasPassword": "${{ inputs.key-password }}",
@@ -109,32 +113,10 @@ runs:
         capacitor telemetry off
         capacitor build --androidreleasetype APK android
         # capacitor build --keystorepath ../my-release-key.keystore --keystorepass ${{ inputs.key-password }} --keystorealias ${{ inputs.app-alias }} --keystorealiaspass ${{ inputs.store-password }} --androidreleasetype APK android
-        
-        
-        
+ 
       shell: bash
       working-directory: ionic_build_folder
-    
-    - name: Signed APK Builder
-      # You may pin to the exact commit or the version.
-      # uses: TeamNecta/build-signed-apk@eefb21641cb768bcb841c11f1cf83dae1e1a7e11
-      uses: TeamNecta/build-signed-apk@v2.1
-      with:
-        # The JDK version to use
-        java_version: 17 # optional, default is 17
-        # The contents of the keystore file, encoded as base64
-        # keystore_b64: # optional
-        # The path to the .jks keystore file
-        keystore_file: ionic_build_folder/my-release-key.keystore # optional 
-        # Keystore file password
-        keystore_password: ${{ inputs.store-password }}
-        # Key alias
-        key_alias: ${{ inputs.app-alias }}
-        # Key password
-        key_password: ${{ inputs.key-password }}
-        # Directory of the gradlew file
-        gradlew_dir: ionic_build_folder/android
-    
+     
     - name: Copy APK to output folder
       run: |
         mkdir -p ${{ inputs.output-folder-path }}
