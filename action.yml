@@ -75,6 +75,10 @@ runs:
     - name: Install Android SDK
       uses: Swisyn/setup-android-sdk@v1
 
+    - name: test apksinger
+      shell: bash
+      run:  apksigner --version
+
     - name: Setup ionic and capacitor
       run: |
         npm install -g @ionic/cli
