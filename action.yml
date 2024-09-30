@@ -73,7 +73,12 @@ runs:
       run: sudo apt-get install -y jq
 
     - name: Install Android SDK
-      uses: Swisyn/setup-android-sdk@v1
+      uses: android-actions/setup-android@v3
+      
+    - name: Config buildTools
+      shell: bash
+      run: echo "$ANDROID_HOME/build-tools/34.0.0" >> $GITHUB_PATH"
+      
 
     - name: test apksinger
       shell: bash
