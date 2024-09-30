@@ -109,9 +109,29 @@ runs:
         cd android
         ./gradlew assembleDebug
         ./gradlew assembleRelease 
+        
       shell: bash
       working-directory: ionic_build_folder
+    - name: Setup ionic and capacitor
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.app-keystore }}" ]; then
+          echo "开始签名apk"
+          KEYSTORE_PATH="${{ inputs.app-keystore }}"
+          ALIAS="${{ inputs.app-alias }}"
+          STORE_PASSWORD="${{ inputs.store-password }}"
+          KEY_PASSWORD="${{ inputs.key-password }}"
+          APK_PATH="ionic_build_folder/android/app/build/outputs/apk/release.apk"
+          SIGNED_APK_PATH="ionic_build_folder/android/app/build/outputs/apk/release-signed.apk"
 
+          # 签名 APK
+          jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore "$KEYSTORE_PATH" "$APK_PATH" "$ALIAS" -storepass "$STORE_PASSWORD" -keypass "$KEY_PASSWORD"
+
+          # 验证签名
+          jarsigner -verify "$SIGNED_APK_PATH"
+
+          echo "APK 签名完成！"
+        fi
     
     - name: Copy APK to output folder
       run: |
