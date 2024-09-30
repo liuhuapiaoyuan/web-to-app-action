@@ -74,10 +74,13 @@ runs:
 
     - name: Install Android SDK
       uses: android-actions/setup-android@v3
-      
+
     - name: Config buildTools
       shell: bash
-      run: echo "$ANDROID_HOME/build-tools/34.0.0" >> $GITHUB_PATH"
+      run: |
+        latest_version=$(ls $ANDROID_HOME/build-tools | sort -V | tail -n 1)
+        echo "Latest build-tools version: $latest_version"
+        echo "$ANDROID_HOME/build-tools/$latest_version" >> $GITHUB_PATH"
       
 
     - name: test apksinger
