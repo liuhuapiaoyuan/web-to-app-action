@@ -73,11 +73,7 @@ runs:
       run: sudo apt-get install -y jq
 
     - name: Install Android SDK
-      shell: bash
-      run: |
-        sudo apt-get install -y android-sdk
-        yes | sdkmanager --licenses
-        sdkmanager "build-tools;35.0.0" # 确保安装所需的 Build Tools
+      uses: Swisyn/setup-android-sdk@v1
 
     - name: Setup ionic and capacitor
       run: |
