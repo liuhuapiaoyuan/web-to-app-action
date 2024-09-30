@@ -121,8 +121,9 @@ runs:
           ALIAS="${{ inputs.app-alias }}"
           STORE_PASSWORD="${{ inputs.store-password }}"
           KEY_PASSWORD="${{ inputs.key-password }}"
-          APK_PATH="ionic_build_folder/android/app/build/outputs/apk/release.apk"
-          SIGNED_APK_PATH="ionic_build_folder/android/app/build/outputs/apk/release-signed.apk"
+          
+          APK_PATH="ionic_build_folder/android/app/build/outputs/apk/release/app-release-unsigned.apk"
+          SIGNED_APK_PATH="ionic_build_folder/android/app/build/outputs/apk/release/app-release-signed.apk"
 
           # 签名 APK
           jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore "$KEYSTORE_PATH" "$APK_PATH" "$ALIAS" -storepass "$STORE_PASSWORD" -keypass "$KEY_PASSWORD"
