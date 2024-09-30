@@ -80,7 +80,7 @@ runs:
       run: |
         latest_version=$(ls $ANDROID_HOME/build-tools | sort -V | tail -n 1)
         echo "Latest build-tools version: $latest_version"
-        echo "$ANDROID_HOME/build-tools/$latest_version" >> $GITHUB_PATH"
+        echo "$ANDROID_HOME/build-tools/35.0.0" >> $GITHUB_PATH"
       
 
     - name: test apksinger
