@@ -106,7 +106,8 @@ runs:
         cat ionic.config.json
         cat capacitor.config.json
         ionic capacitor add android
-        capacitor build --keystorepath my-release-key.keystore --keystorepass ${{ inputs.key-password }} --keystorealias ${{ inputs.app-alias }} --keystorealiaspass ${{ inputs.store-password }} --androidreleasetype APK android
+        capacitor telemetry off
+        capacitor build --keystorepath ../my-release-key.keystore --keystorepass ${{ inputs.key-password }} --keystorealias ${{ inputs.app-alias }} --keystorealiaspass ${{ inputs.store-password }} --androidreleasetype APK android
         
         
         
