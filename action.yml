@@ -81,6 +81,12 @@ runs:
         latest_version=$(ls $ANDROID_HOME/build-tools | sort -V | tail -n 1)
         echo "Latest build-tools version: $latest_version"
         echo "$ANDROID_HOME/build-tools/$latest_version" >> $GITHUB_PATH
+    
+    - name: List key
+      shell: bash
+      run: |
+        keytool -list -v -keystore ${{ inputs.app-keystore }}
+
 
       
 
