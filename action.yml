@@ -106,9 +106,9 @@ runs:
         cat ionic.config.json
         cat capacitor.config.json
         ionic capacitor add android
-        cd android
-        ./gradlew assembleDebug
-        ./gradlew assembleRelease 
+        ionic capacitor build --keystorepath my-release-key.keystore --keystorepass ${{ inputs.key-password }} --keystorealias ${{ inputs.app-alias }} --keystorealiaspass ${{ inputs.store-password }} --androidreleasetype apk
+        
+        
         
       shell: bash
       working-directory: ionic_build_folder
