@@ -71,11 +71,14 @@ runs:
     - name: Setup jq command
       shell: bash
       run: sudo apt-get install -y jq
+
     - name: Install Android SDK
+      shell: bash
       run: |
         sudo apt-get install -y android-sdk
         yes | sdkmanager --licenses
-        sdkmanager "build-tools;30.0.3" # 确保安装所需的 Build Tools
+        sdkmanager "build-tools;35.0.0" # 确保安装所需的 Build Tools
+
     - name: Setup ionic and capacitor
       run: |
         npm install -g @ionic/cli
