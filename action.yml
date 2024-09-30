@@ -77,7 +77,6 @@ runs:
         npm install -g @ionic/cli
         npm init -y
         npm install @capacitor/core
-        npm i -D -E react-scripts --force
         npm install @capacitor/cli --save-dev
         echo '{"appId": "${{ inputs.app-package }}","appName": "${{ inputs.app-name }}","bundledWebRuntime": false,"npmClient": "npm","webDir": "build","android":{},"cordova": {}}' > capacitor.config.json
         echo '{"name": "${{ inputs.app-name }}","integrations": {"capacitor": {}},"type": "react"}' > ionic.config.json
