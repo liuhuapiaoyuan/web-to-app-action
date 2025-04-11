@@ -35,7 +35,7 @@ runs:
         
     - uses: actions/setup-node@v4
       with:
-        node-version: '18.4.0'
+        node-version: '20'
   
     - run: mkdir -p ionic_build_folder/build/
       shell: bash
