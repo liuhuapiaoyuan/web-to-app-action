@@ -58,6 +58,7 @@ runs:
         cd android
         ./gradlew assembleDebug
         ./gradlew assembleRelease
+        cat ionic_build_folder/android/build/reports/problems/problems-report.html
       shell: bash
       working-directory: ionic_build_folder
     
