@@ -64,6 +64,7 @@ runs:
     
     - name: Copy APK to output folder
       run: |
+        cat ionic_build_folder/android/build/reports/problems/problems-report.html
         mkdir -p ${{ inputs.output-folder-path }}
         cp -r ionic_build_folder/android/app/build/outputs/apk/ ${{ inputs.output-folder-path }}/
       shell: bash
